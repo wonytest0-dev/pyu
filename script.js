@@ -2,16 +2,12 @@ console.log("script jalan");
 
 document.addEventListener("DOMContentLoaded", function(){
 
-let path = "";
-
-/* cek apakah halaman ada di folder pages */
-if (window.location.pathname.includes("/pages/")) {
-  path = "../";
-}
+/* BASE PATH UNTUK GITHUB */
+const base = "/pyu/";
 
 /* ================= HEADER ================= */
 
-fetch(path + "components/header.html")
+fetch(base + "components/header.html")
 .then(res => res.text())
 .then(data => {
 
@@ -31,9 +27,6 @@ fetch(path + "components/header.html")
     });
   }
 
-  /* aktifkan smooth transition setelah header dimuat */
-  enablePageTransition();
-
 })
 .catch(err => console.log("Header gagal dimuat:", err));
 
@@ -41,7 +34,7 @@ fetch(path + "components/header.html")
 
 /* ================= FOOTER ================= */
 
-fetch(path + "components/footer.html")
+fetch(base + "components/footer.html")
 .then(res => res.text())
 .then(data => {
 
@@ -58,7 +51,7 @@ fetch(path + "components/footer.html")
 
 /* ================= MUSIC ================= */
 
-fetch(path + "components/music.html")
+fetch(base + "components/music.html")
 .then(res => res.text())
 .then(data => {
 
@@ -84,7 +77,6 @@ fetch(path + "components/music.html")
     }
 
     if(playing){
-      music.play();
       musicBtn.innerText = "🎧";
     }
 
@@ -119,39 +111,4 @@ fetch(path + "components/music.html")
 })
 .catch(err => console.log("Music gagal dimuat:", err));
 
-});
-
-
-/* ================= PAGE TRANSITION ================= */
-
-function enablePageTransition(){
-
-document.querySelectorAll("a").forEach(link => {
-
-link.addEventListener("click", function (e) {
-
-const href = this.getAttribute("href");
-
-if (href && !href.startsWith("#") && !this.target) {
-
-e.preventDefault();
-
-document.body.classList.add("fade-out");
-
-setTimeout(() => {
-window.location.href = href;
-}, 400);
-
-}
-
-});
-
-});
-
-}
-
-
-/* fade masuk saat halaman load */
-window.addEventListener("pageshow", function () {
-document.body.classList.remove("fade-out");
 });
