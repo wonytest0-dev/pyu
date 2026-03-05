@@ -2,8 +2,13 @@ console.log("script jalan");
 
 document.addEventListener("DOMContentLoaded", function(){
 
-/* BASE PATH UNTUK GITHUB */
-const base = "/pyu/";
+/* ================= BASE PATH OTOMATIS ================= */
+
+let base = "";
+
+if (window.location.hostname.includes("github.io")) {
+  base = "/pyu/";
+}
 
 /* ================= HEADER ================= */
 
