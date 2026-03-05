@@ -122,7 +122,9 @@ opacity:0;
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 2;
-  margin-top: 120px;
+
+  width: 90%;
+  max-width: 600px;
 }
 
 .hero-content h1 {
@@ -302,3 +304,4 @@ footer {
 }
 
 }
+
